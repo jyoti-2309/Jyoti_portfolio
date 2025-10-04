@@ -1,12 +1,16 @@
 require('dotenv').config();
+
 const express = require('express');
 const app = express();
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
 const db = require('./db');
 app.use(express.json());
+
 const cors = require('cors');
-app.use(cors())
+app.use(cors({ origin: 'https://jyoti-portfolio-frontend.onrender.com' }));
 
 const chatModel = require('./models/chat')
 
@@ -15,7 +19,7 @@ app.post('/chats', async (req,res) => {
         const {name, email, message} = req.body;
         const newChat = new chatModel({name, email, message});
         const response = await newChat.save();
-        console.log('menu data saved successfully');
+        console.log('Chat data saved successfully');
         res.status(200).json(response);
     }
     catch(err){
