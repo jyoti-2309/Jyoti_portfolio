@@ -28,6 +28,7 @@ app.post('/chats', async (req,res) => {
     }
 })
 
+app.get('/', (req, res) => res.send('Backend is alive!'));
 
 const PORT = process.env.PORT;
 
