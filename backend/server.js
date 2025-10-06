@@ -11,6 +11,7 @@ app.use(express.json());
 
 const cors = require('cors');
 app.use(cors({ origin: 'https://jyoti-portfolio-frontend.onrender.com' }));
+app.use(cors());
 
 const chatModel = require('./models/chat')
 
